@@ -179,3 +179,36 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+# ---------------------------------------------------------------------------
+# AgentMailSender
+# ---------------------------------------------------------------------------
+# Runtime data: SQLite database, stored attachments, generated secret key,
+# .eml files written by the "file" transport. Never commit these.
+data/
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+secret.key
+outbox/
+
+# Local environment overrides (keep .env.example tracked)
+.env.*
+!.env.example
+docker-compose.override.yml
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Browser automation artefacts from local UI checks
+screenshots/

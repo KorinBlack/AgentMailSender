@@ -1,2 +1,7 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Shell scripts must keep LF endings everywhere (they run on Linux hosts and containers).
+*.sh text eol=lf
+Dockerfile text eol=lf
+*.py text eol=lf
