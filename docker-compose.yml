@@ -1,0 +1,24 @@
+services:
+  agentmailsender:
+    build: .
+    image: agentmailsender:latest
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      # Address operators open; used for links in notifications (can also be set in the UI).
+      AMS_PUBLIC_URL: ${AMS_PUBLIC_URL:-http://localhost:8080}
+      # Encrypts SMTP passwords and webhook secrets at rest. When empty, a key is generated
+      # in the data volume (data/secret.key). Back it up together with the database.
+      AMS_SECRET_KEY: ${AMS_SECRET_KEY:-}
+      # First operator account (only used while no operator exists). When the password is empty,
+      # a random one is generated and printed once in the logs: docker compose logs agentmailsender
+      AMS_ADMIN_USERNAME: ${AMS_ADMIN_USERNAME:-admin}
+      AMS_ADMIN_PASSWORD: ${AMS_ADMIN_PASSWORD:-}
+      # Behind a reverse proxy that terminates HTTPS, trust its X-Forwarded-* headers.
+      AMS_FORWARDED_ALLOW_IPS: ${AMS_FORWARDED_ALLOW_IPS:-127.0.0.1}
+    volumes:
+      - ams-data:/data
+
+volumes:
+  ams-data:

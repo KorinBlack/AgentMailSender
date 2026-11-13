@@ -1,0 +1,25 @@
+.git
+.github
+.venv
+venv
+data
+outbox
+tests
+skills
+screenshots
+**/__pycache__
+**/*.pyc
+*.egg-info
+build
+dist
+.env
+.env.*
+.pytest_cache
+.ruff_cache
+.vscode
+.idea
+.claude
+
+# Not needed in the image
+deploy
+docs
